@@ -147,3 +147,10 @@ export const porque = {
     },
   ],
 };
+
+// Fotos con licencia Creative Commons que exigen dar crédito
+export const creditos = [
+  { autor: 'Art DiNo', licencia: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Palacio_de_Justicia._Lima,_Per%C3%BA.jpg' },
+  { autor: 'comicpie', licencia: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Palacio_De_Justicia,_Lima,_Peru.jpg' },
+  { autor: 'Rodolfo Pimentel', licencia: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Lima_14_Palacio_de_Justicia.jpg' },
+];

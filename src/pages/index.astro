@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import Foto from '../components/Foto.astro';
 import Icon from '../components/Icon.astro';
 import {
-  firma, hero, nosotros, bandas, mapa, firmaBloque, cita, areas, profesionales, porque,
+  firma, hero, nosotros, bandas, mapa, firmaBloque, cita, areas, profesionales, porque, creditos,
 } from '../data/site';
 const year = new Date().getFullYear();
 ---
@@ -146,6 +146,13 @@ const year = new Date().getFullYear();
         <Icon name="whatsapp" size={16} /> Escríbenos por WhatsApp
       </a>
       <p class="copy">© {year} {firma.razonSocial}</p>
+      <p class="credits">
+        Fotos del Palacio de Justicia:{' '}
+        {creditos.map((c, i) => (
+          <>{i > 0 && ', '}<a href={c.url} target="_blank" rel="noopener">{c.autor}</a> ({c.licencia})</>
+        ))}
+        , vía Wikimedia Commons.
+      </p>
     </div>
     <div class="footer__right">
       <div>
@@ -294,6 +301,8 @@ const year = new Date().getFullYear();
   .border-button--light { display: inline-flex; align-items: center; gap: 0.55rem; }
   .border-button--light:hover { background: var(--off-white); color: var(--dark-green); border-color: var(--off-white); }
   .copy { margin-top: auto; opacity: 0.6; font-size: 0.78rem; }
+  .credits { opacity: 0.45; font-size: 0.68rem; margin-top: -1.4rem; max-width: 36ch; }
+  .credits a { text-decoration: underline; }
   .footer__right { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
   .footer h4 { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; margin: 0 0 0.8rem; opacity: 0.6; }
   .footer p + p { margin-top: 0.6rem; }
