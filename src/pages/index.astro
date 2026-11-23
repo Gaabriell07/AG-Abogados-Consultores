@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import Foto from '../components/Foto.astro';
 import Icon from '../components/Icon.astro';
 import {
-  firma, hero, nosotros, bandas, mapa, firmaBloque, cita, areas, profesionales, publicaciones,
+  firma, hero, nosotros, bandas, mapa, firmaBloque, cita, areas, profesionales, porque,
 } from '../data/site';
 const year = new Date().getFullYear();
 ---
@@ -102,15 +102,17 @@ const year = new Date().getFullYear();
       </div>
     </section>
 
-    <!-- DESTACADOS / PUBLICACIONES -->
-    <section id="publicaciones" class="text-standard pad">
-      <h2 class="pretitle reveal">{publicaciones.pretitulo}</h2>
+    <!-- POR QUÉ ELEGIRNOS -->
+    <section id="porque" class="text-standard pad">
+      <h2 class="pretitle reveal">{porque.pretitulo}</h2>
       <div class="cards">
-        {publicaciones.items.map((c) => (
-          <a class="card reveal" href={c.href}>
+        {porque.items.map((c, i) => (
+          <article class="card reveal">
+            <div class="card__img"><Foto src={c.imagen} alt="" /></div>
+            <span class="card__num">{String(i + 1).padStart(2, '0')}</span>
             <h3>{c.titulo}</h3>
-            <div class="card__img"><Foto src={c.imagen} /></div>
-          </a>
+            <p class="card__text">{c.texto}</p>
+          </article>
         ))}
       </div>
     </section>
@@ -269,14 +271,16 @@ const year = new Date().getFullYear();
 
   /* CARDS */
   .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-  .card {
-    display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem;
-    border-top: 1px solid var(--green); padding-top: 1rem;
+  .card { display: flex; flex-direction: column; }
+  .card__img { aspect-ratio: 4 / 3; overflow: hidden; margin-bottom: 1.4rem; }
+  .card__img :global(img) { transition: transform 0.8s ease; }
+  .card:hover .card__img :global(img) { transform: scale(1.04); }
+  .card__num {
+    font-family: var(--serif); font-weight: 300; font-size: 2.6rem; line-height: 1;
+    color: var(--medium-grey); border-top: 1px solid var(--green); padding-top: 1rem;
   }
-  .card h3 { font-family: var(--serif); font-weight: 400; font-size: 1.3rem; line-height: 1.2; }
-  .card__img { aspect-ratio: 4 / 3; overflow: hidden; }
-  .card__img :global(img) { transition: transform 0.6s ease; }
-  .card:hover .card__img :global(img) { transform: scale(1.05); }
+  .card h3 { font-family: var(--serif); font-weight: 400; font-size: 1.4rem; line-height: 1.15; margin: 0.8rem 0 0.7rem; }
+  .card__text { font-size: 0.88rem; color: var(--very-dark-grey); }
 
   /* FOOTER */
   .footer {

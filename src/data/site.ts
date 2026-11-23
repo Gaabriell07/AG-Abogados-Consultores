@@ -1,7 +1,5 @@
 // ─────────────────────────────────────────────────────────────
 // TODO EL CONTENIDO DE LA WEB ESTÁ AQUÍ.
-// Lo marcado con [CONFIRMAR] es texto de ejemplo: hay que
-// validarlo con la Dra. Arévalo antes de publicar.
 // Las imágenes van en /public/images/ con el nombre indicado.
 // ─────────────────────────────────────────────────────────────
 
@@ -30,7 +28,7 @@ export const nav = [
   { label: 'La Firma', href: '#firma' },
   { label: 'Profesionales', href: '#profesionales' },
   { label: 'Áreas de Práctica', href: '#areas' },
-  { label: 'Publicaciones', href: '#publicaciones' },
+  { label: 'Por qué elegirnos', href: '#porque' },
   { label: 'Contacto', href: '#contacto' },
 ];
 
@@ -124,13 +122,28 @@ export const profesionales = {
   ],
 };
 
-export const publicaciones = {
-  pretitulo: 'Destacados',
-  // [CONFIRMAR] pueden enlazar a videos de TikTok o artículos
+export const porque = {
+  pretitulo: '¿Por qué elegirnos?',
   items: [
-    { titulo: '¿Cómo solicitar una pensión de alimentos en el Perú?', imagen: '/images/pub-1.jpg', href: '#' },
-    { titulo: 'Medidas de protección: qué son y cómo pedirlas', imagen: '/images/pub-2.jpg', href: '#' },
-    { titulo: 'Divorcio por mutuo acuerdo: pasos y requisitos', imagen: '/images/pub-3.jpg', href: '#' },
-    { titulo: 'Tus derechos si te despiden sin causa justa', imagen: '/images/pub-4.jpg', href: '#' },
+    {
+      titulo: 'Presencia en tres ciudades',
+      texto: 'Contamos con sedes en Lima, Tarapoto y Tocache, y acompañamos cada caso de cerca.',
+      imagen: '/images/porque-1.jpg',
+    },
+    {
+      titulo: 'Atención en todo el Perú',
+      texto: 'Asesoramos a nivel nacional, de forma presencial o virtual, para que la distancia no sea un obstáculo.',
+      imagen: '/images/porque-2.jpg',
+    },
+    {
+      titulo: 'Especialistas en cumplimiento normativo',
+      texto: 'Asesoramos a empresas en prevención de lavado de activos y financiamiento del terrorismo, y en derecho notarial y registral.',
+      imagen: '/images/porque-3.jpg',
+    },
+    {
+      titulo: 'Experiencia en el sistema de justicia',
+      texto: 'Nuestra trayectoria en el Poder Judicial y en el sector público nos permite anticipar cómo se resuelven los casos.',
+      imagen: '/images/porque-4.jpg',
+    },
   ],
 };
