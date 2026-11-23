@@ -1,5 +1,5 @@
 ---
-import { firma, nav } from '../data/site';
+import { firma, nav, whatsappUrl } from '../data/site';
 import Icon from './Icon.astro';
 ---
 <header class="navbar" id="navbar">
@@ -22,7 +22,7 @@ import Icon from './Icon.astro';
     {nav.map((n) => <a href={n.href}>{n.label}</a>)}
   </nav>
   <div class="overlay__foot">
-    <a href={`https://wa.me/${firma.whatsapp}`} target="_blank" rel="noopener" aria-label="WhatsApp"><Icon name="whatsapp" /></a>
+    <a href={whatsappUrl} target="_blank" rel="noopener" aria-label="WhatsApp"><Icon name="whatsapp" /></a>
     <a href={firma.redes.tiktok} target="_blank" rel="noopener" aria-label="TikTok"><Icon name="tiktok" /></a>
     <a href={firma.redes.facebook} target="_blank" rel="noopener" aria-label="Facebook"><Icon name="facebook" /></a>
     {firma.telefonos.map((t) => <a href={`tel:+51${t.replace(/\s/g, '')}`}>{t}</a>)}

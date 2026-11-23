@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import Foto from '../components/Foto.astro';
 import Icon from '../components/Icon.astro';
 import {
-  firma, hero, nosotros, bandas, mapa, firmaBloque, cita, areas, profesionales, porque, creditos,
+  firma, hero, nosotros, bandas, mapa, firmaBloque, cita, areas, profesionales, porque, creditos, whatsappUrl,
 } from '../data/site';
 const year = new Date().getFullYear();
 ---
@@ -142,7 +142,7 @@ const year = new Date().getFullYear();
         <span>{firma.nombre}</span>
         <small>Abogados &amp; Consultores</small>
       </a>
-      <a class="border-button border-button--light" href={`https://wa.me/${firma.whatsapp}`} target="_blank" rel="noopener">
+      <a class="border-button border-button--light" href={whatsappUrl} target="_blank" rel="noopener">
         <Icon name="whatsapp" size={16} /> Escríbenos por WhatsApp
       </a>
       <p class="copy">© {year} {firma.razonSocial}</p>

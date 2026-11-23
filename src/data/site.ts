@@ -11,6 +11,9 @@ export const firma = {
   ciudad: 'Lima, Perú',
   telefonos: ['957 590 432', '983 308 411'],
   whatsapp: '51957590432', // solo números, con código de país (51 = Perú)
+  // Mensaje que aparece escrito al abrir el chat de WhatsApp
+  whatsappMensaje:
+    'Hola, vengo de su página web. Quisiera solicitar una consulta legal sobre el siguiente tema: ',
   atencion: 'Asesoramos a nivel nacional, presencial o virtual',
   sedes: [
     { ciudad: 'Lima', direccion: 'Av. Parque Zonal, Mz. D, Int. 14, Carabayllo' },
@@ -23,6 +26,9 @@ export const firma = {
     linkedin: 'https://www.linkedin.com/in/maria-janelly-arevalo-grandez-612b131a5/',
   },
 };
+
+// Enlace de WhatsApp con el mensaje ya escrito
+export const whatsappUrl = `https://wa.me/${firma.whatsapp}?text=${encodeURIComponent(firma.whatsappMensaje)}`;
 
 export const nav = [
   { label: 'La Firma', href: '#firma' },
