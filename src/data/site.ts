@@ -44,7 +44,7 @@ export const nosotros = {
   destacado:
     'Desde 2021 brindamos asesoría y patrocinio legal en Lima, con un trato directo y humano en cada caso.',
   texto: [
-    'Arévalo Grández Abogados & Consultores fue fundado por la Dra. María Janelly Arévalo Grández, abogada con experiencia en el Poder Judicial y en el Ministerio de la Mujer y Poblaciones Vulnerables.',
+    'Arévalo Grández Abogados & Consultores fue fundado por los abogados Esteban Arévalo Grández y María Janelly Arévalo Grández, con especialización en cumplimiento normativo, derecho notarial y registral, y experiencia en el Poder Judicial y en el Ministerio de la Mujer y Poblaciones Vulnerables.',
     'Contamos con sedes en Lima, Tarapoto y Tocache, y asesoramos a nivel nacional de forma presencial o virtual, con estrategias claras y comunicación constante en cada caso.',
   ],
   enlaces: [
@@ -61,19 +61,19 @@ export const bandas = {
 };
 
 export const firmaBloque = {
-  titulo: 'Experiencia pública al servicio de nuestros clientes',
+  titulo: 'Especialización y experiencia al servicio de nuestros clientes',
   destacado:
-    'Conocemos el sistema de justicia desde adentro, y eso marca la diferencia en cada estrategia.',
+    'Unimos la experiencia en el sistema de justicia con la especialización técnica que exigen personas y empresas.',
   texto: [
-    'La trayectoria de nuestra fundadora en el Poder Judicial y en el sector público nos permite anticipar cómo se resuelven los casos y actuar con rapidez y precisión.',
-    'Trabajamos con honestidad: explicamos cada etapa del proceso, los plazos reales y las alternativas disponibles. [CONFIRMAR]',
+    'La trayectoria en el Poder Judicial y en el sector público nos permite anticipar cómo se resuelven los casos y actuar con rapidez y precisión.',
+    'A ello sumamos especialización en cumplimiento normativo, prevención de lavado de activos y financiamiento del terrorismo, y derecho notarial y registral, para asesorar a empresas con un enfoque preventivo.',
   ],
   enlaces: [{ label: 'Agenda una consulta', href: '#contacto' }],
 };
 
 export const cita = {
-  texto: 'Cada caso es una persona, una familia o una empresa que confía en nosotros. Esa confianza se defiende con trabajo serio.',
-  autor: 'Dra. María Janelly Arévalo Grández, Socia Fundadora [CONFIRMAR CITA]',
+  texto: 'Asesoría legal a nivel nacional, presencial o virtual, desde nuestras sedes en Lima, Tarapoto y Tocache.',
+  autor: 'Arévalo Grández Abogados & Consultores',
 };
 
 export const areas = {
@@ -92,12 +92,29 @@ export const areas = {
 export const profesionales = {
   pretitulo: 'Profesionales',
   destacado: 'Un equipo comprometido con cada cliente.',
-  // Fotos: /public/images/equipo-1.jpg, equipo-2.jpg ...
   equipo: [
-    { nombre: 'Dra. María Janelly Arévalo Grández', cargo: 'Socia Fundadora', foto: '/images/equipo-1.jpg' },
-    { nombre: 'Nombre del abogado [CONFIRMAR]', cargo: 'Asociado', foto: '/images/equipo-2.jpg' },
-    { nombre: 'Nombre del abogado [CONFIRMAR]', cargo: 'Asociado', foto: '/images/equipo-3.jpg' },
-    { nombre: 'Nombre del abogado [CONFIRMAR]', cargo: 'Asociado', foto: '/images/equipo-4.jpg' },
+    {
+      nombre: 'Esteban Arévalo Grández',
+      cargo: 'Abogado Fundador',
+      foto: '/images/esteban-arevalo.jpg',
+      bio: [
+        'Abogado fundador de Arévalo Grández Abogados & Consultores.',
+        'Especialista en cumplimiento normativo y prevención de lavado de activos y financiamiento del terrorismo, y en derecho notarial y registral.',
+      ],
+      formacion: 'Universidad César Vallejo',
+      linkedin: '', // pegar aquí la URL de su LinkedIn
+    },
+    {
+      nombre: 'María Janelly Arévalo Grández',
+      cargo: 'Socia Fundadora',
+      foto: '/images/maria-janelly-arevalo.jpg',
+      bio: [
+        'Socia fundadora de Arévalo Grández Abogados & Consultores desde 2021.',
+        'Cuenta con experiencia en el Poder Judicial y se desempeña en el Ministerio de la Mujer y Poblaciones Vulnerables.',
+      ],
+      formacion: '',
+      linkedin: 'https://www.linkedin.com/in/maria-janelly-arevalo-grandez-612b131a5/',
+    },
   ],
 };
 

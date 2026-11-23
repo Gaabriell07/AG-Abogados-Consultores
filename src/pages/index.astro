@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Foto from '../components/Foto.astro';
+import Icon from '../components/Icon.astro';
 import {
   firma, hero, nosotros, bandas, firmaBloque, cita, areas, profesionales, publicaciones,
 } from '../data/site';
@@ -85,8 +86,17 @@ const year = new Date().getFullYear();
         {profesionales.equipo.map((p) => (
           <article class="team__card reveal">
             <div class="team__photo"><Foto src={p.foto} alt={p.nombre} /></div>
-            <h3>{p.nombre}</h3>
-            <p>{p.cargo}</p>
+            <div class="team__info">
+              <p class="team__role">{p.cargo}</p>
+              <h3>{p.nombre}</h3>
+              {p.bio.map((b) => <p class="team__bio">{b}</p>)}
+              {p.formacion && <p class="team__edu">{p.formacion}</p>}
+              {p.linkedin && (
+                <a class="team__social" href={p.linkedin} target="_blank" rel="noopener" aria-label={`LinkedIn de ${p.nombre}`}>
+                  <Icon name="linkedin" size={16} /> LinkedIn
+                </a>
+              )}
+            </div>
           </article>
         ))}
       </div>
@@ -117,7 +127,7 @@ const year = new Date().getFullYear();
         <small>Abogados &amp; Consultores</small>
       </a>
       <a class="border-button border-button--light" href={`https://wa.me/${firma.whatsapp}`} target="_blank" rel="noopener">
-        Escríbenos por WhatsApp
+        <Icon name="whatsapp" size={16} /> Escríbenos por WhatsApp
       </a>
       <p class="copy">© {year} {firma.razonSocial}</p>
     </div>
@@ -133,9 +143,11 @@ const year = new Date().getFullYear();
       </div>
       <div>
         <h4>Síguenos</h4>
-        <p><a href={firma.redes.tiktok} target="_blank" rel="noopener">TikTok</a></p>
-        <p><a href={firma.redes.facebook} target="_blank" rel="noopener">Facebook</a></p>
-        <p><a href={firma.redes.linkedin} target="_blank" rel="noopener">LinkedIn</a></p>
+        <div class="socials">
+          <a href={firma.redes.tiktok} target="_blank" rel="noopener" aria-label="TikTok"><Icon name="tiktok" size={20} /></a>
+          <a href={firma.redes.facebook} target="_blank" rel="noopener" aria-label="Facebook"><Icon name="facebook" size={20} /></a>
+          <a href={firma.redes.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><Icon name="linkedin" size={20} /></a>
+        </div>
       </div>
     </div>
   </footer>
@@ -217,10 +229,21 @@ const year = new Date().getFullYear();
   .quote__byline { text-align: right; margin-top: 1.5rem; font-size: 0.85rem; color: var(--very-dark-grey); }
 
   /* TEAM */
-  .team { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
-  .team__photo { aspect-ratio: 3 / 4; margin-bottom: 1rem; }
-  .team__card h3 { font-family: var(--serif); font-weight: 400; font-size: 1.25rem; line-height: 1.2; }
-  .team__card p { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--medium-grey); margin-top: 0.3rem; }
+  .team { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); margin-top: 3.5rem; }
+  .team__card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.8rem; align-items: end; }
+  .team__photo { aspect-ratio: 4 / 5; background: var(--very-light-grey); }
+  .team__photo :global(img) { object-position: center top; transition: transform 0.8s ease; }
+  .team__card:hover .team__photo :global(img) { transform: scale(1.03); }
+  .team__role { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--medium-grey); }
+  .team__card h3 { font-family: var(--serif); font-weight: 300; font-size: clamp(1.6rem, 2.4vw, 2.1rem); line-height: 1.1; text-transform: uppercase; margin: 0.6rem 0 1.1rem; }
+  .team__bio { font-size: 0.88rem; color: var(--very-dark-grey); }
+  .team__bio + .team__bio { margin-top: 0.6rem; }
+  .team__edu { font-size: 0.8rem; color: var(--medium-grey); margin-top: 1rem; font-style: italic; }
+  .team__social {
+    display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 1.2rem;
+    font-size: 0.8rem; border-bottom: 1px solid currentColor; padding-bottom: 2px;
+  }
+  .team__social:hover { opacity: 0.7; }
 
   /* CARDS */
   .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
@@ -242,6 +265,7 @@ const year = new Date().getFullYear();
   .footer__left { display: flex; flex-direction: column; align-items: flex-start; gap: 2rem; }
   .footer__logo span { display: block; font-family: var(--serif); font-weight: 300; font-size: 2rem; text-transform: uppercase; line-height: 1; }
   .footer__logo small { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .border-button--light { display: inline-flex; align-items: center; gap: 0.55rem; }
   .border-button--light:hover { background: var(--off-white); color: var(--dark-green); border-color: var(--off-white); }
   .copy { margin-top: auto; opacity: 0.6; font-size: 0.78rem; }
   .footer__right { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
@@ -250,14 +274,23 @@ const year = new Date().getFullYear();
   .footer strong { font-weight: 500; }
   .footer__note { opacity: 0.7; font-size: 0.8rem; }
   .footer__right a:hover { text-decoration: underline; }
+  .socials { display: flex; gap: 0.7rem; }
+  .socials a {
+    display: grid; place-items: center; width: 42px; height: 42px;
+    border: 1px solid rgba(239, 246, 237, 0.35); border-radius: 50%;
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+  }
+  .socials a:hover { background: var(--off-white); color: var(--dark-green); border-color: var(--off-white); text-decoration: none; }
 
   /* RESPONSIVE */
   @media (max-width: 1000px) {
     .text-standard__flex, .areas { max-width: none; }
-    .team, .cards { grid-template-columns: repeat(2, 1fr); }
+    .cards { grid-template-columns: repeat(2, 1fr); }
+    .team { grid-template-columns: 1fr; max-width: 720px; }
     .two-col, .footer { grid-template-columns: 1fr; }
   }
   @media (max-width: 640px) {
+    .team__card { grid-template-columns: 1fr; }
     .text-standard__flex, .areas, .two-col__text, .gallery, .footer__right { grid-template-columns: 1fr; }
     .band { height: 55svh; }
     .gallery__item { aspect-ratio: 4 / 3; }

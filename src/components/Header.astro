@@ -1,5 +1,6 @@
 ---
 import { firma, nav } from '../data/site';
+import Icon from './Icon.astro';
 ---
 <header class="navbar" id="navbar">
   <a href="#" class="logo">
@@ -21,7 +22,9 @@ import { firma, nav } from '../data/site';
     {nav.map((n) => <a href={n.href}>{n.label}</a>)}
   </nav>
   <div class="overlay__foot">
-    <a href={`https://wa.me/${firma.whatsapp}`} target="_blank" rel="noopener">WhatsApp</a>
+    <a href={`https://wa.me/${firma.whatsapp}`} target="_blank" rel="noopener" aria-label="WhatsApp"><Icon name="whatsapp" /></a>
+    <a href={firma.redes.tiktok} target="_blank" rel="noopener" aria-label="TikTok"><Icon name="tiktok" /></a>
+    <a href={firma.redes.facebook} target="_blank" rel="noopener" aria-label="Facebook"><Icon name="facebook" /></a>
     {firma.telefonos.map((t) => <a href={`tel:+51${t.replace(/\s/g, '')}`}>{t}</a>)}
   </div>
 </div>
@@ -110,7 +113,7 @@ import { firma, nav } from '../data/site';
     font-size: clamp(2rem, 7vw, 3.2rem);
     text-transform: uppercase;
   }
-  .overlay__foot { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.85rem; opacity: 0.8; }
+  .overlay__foot { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; font-size: 0.85rem; opacity: 0.85; }
 
   @media (max-width: 900px) {
     .navbar__links { display: none; }
