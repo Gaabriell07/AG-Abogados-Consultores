@@ -22,7 +22,7 @@ import { firma, nav } from '../data/site';
   </nav>
   <div class="overlay__foot">
     <a href={`https://wa.me/${firma.whatsapp}`} target="_blank" rel="noopener">WhatsApp</a>
-    <a href={`mailto:${firma.email}`}>{firma.email}</a>
+    {firma.telefonos.map((t) => <a href={`tel:+51${t.replace(/\s/g, '')}`}>{t}</a>)}
   </div>
 </div>
 

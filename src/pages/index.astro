@@ -123,13 +123,13 @@ const year = new Date().getFullYear();
     </div>
     <div class="footer__right">
       <div>
-        <h4>Dirección</h4>
-        <p>{firma.direccion}</p>
+        <h4>Sedes</h4>
+        {firma.sedes.map((x) => <p><strong>{x.ciudad}</strong><br />{x.direccion}</p>)}
       </div>
       <div>
         <h4>Contacto</h4>
-        <p><a href={`mailto:${firma.email}`}>{firma.email}</a></p>
-        <p><a href={`tel:${firma.telefono.replace(/\s/g, '')}`}>{firma.telefono}</a></p>
+        {firma.telefonos.map((t) => <p><a href={`tel:+51${t.replace(/\s/g, '')}`}>{t}</a></p>)}
+        <p class="footer__note">{firma.atencion}</p>
       </div>
       <div>
         <h4>Síguenos</h4>
@@ -246,7 +246,9 @@ const year = new Date().getFullYear();
   .copy { margin-top: auto; opacity: 0.6; font-size: 0.78rem; }
   .footer__right { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
   .footer h4 { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; margin: 0 0 0.8rem; opacity: 0.6; }
-  .footer p + p { margin-top: 0.3rem; }
+  .footer p + p { margin-top: 0.6rem; }
+  .footer strong { font-weight: 500; }
+  .footer__note { opacity: 0.7; font-size: 0.8rem; }
   .footer__right a:hover { text-decoration: underline; }
 
   /* RESPONSIVE */

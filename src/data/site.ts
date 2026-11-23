@@ -11,12 +11,16 @@ export const firma = {
   razonSocial: 'Arévalo Grández Abogados & Consultores S.A.C.',
   fundacion: 2021,
   ciudad: 'Lima, Perú',
-  direccion: 'Dirección del estudio [CONFIRMAR], Lima, Perú',
-  telefono: '+51 999 999 999', // [CONFIRMAR]
-  whatsapp: '51999999999', // [CONFIRMAR] solo números, con código de país
-  email: 'contacto@arevalograndez.pe', // [CONFIRMAR]
+  telefonos: ['957 590 432', '983 308 411'],
+  whatsapp: '51957590432', // solo números, con código de país (51 = Perú)
+  atencion: 'Asesoramos a nivel nacional, presencial o virtual',
+  sedes: [
+    { ciudad: 'Lima', direccion: 'Av. Parque Zonal, Mz. D, Int. 14, Carabayllo' },
+    { ciudad: 'Tarapoto', direccion: 'Jr. Rioja N.º 160' },
+    { ciudad: 'Tocache', direccion: 'Jr. Jorge Chávez 437' },
+  ],
   redes: {
-    tiktok: 'https://www.tiktok.com/@mjanellyag',
+    tiktok: 'https://www.tiktok.com/@abogados_consultores1',
     facebook: 'https://www.facebook.com/MJSEFNS/',
     linkedin: 'https://www.linkedin.com/in/maria-janelly-arevalo-grandez-612b131a5/',
   },
@@ -41,7 +45,7 @@ export const nosotros = {
     'Desde 2021 brindamos asesoría y patrocinio legal en Lima, con un trato directo y humano en cada caso.',
   texto: [
     'Arévalo Grández Abogados & Consultores fue fundado por la Dra. María Janelly Arévalo Grández, abogada con experiencia en el Poder Judicial y en el Ministerio de la Mujer y Poblaciones Vulnerables.',
-    'Acompañamos a personas, familias y empresas con estrategias claras, comunicación constante y un compromiso real con la solución de cada problema legal. [CONFIRMAR]',
+    'Contamos con sedes en Lima, Tarapoto y Tocache, y asesoramos a nivel nacional de forma presencial o virtual, con estrategias claras y comunicación constante en cada caso.',
   ],
   enlaces: [
     { label: 'La Firma', href: '#firma' },
@@ -75,14 +79,13 @@ export const cita = {
 export const areas = {
   pretitulo: 'Áreas de Práctica',
   destacado: 'Asesoría y patrocinio en las materias que más impactan la vida de nuestros clientes.',
-  // [CONFIRMAR] lista de áreas con la doctora
   lista: [
-    { titulo: 'Derecho de Familia', detalle: 'Alimentos, divorcio, tenencia, régimen de visitas, filiación.' },
-    { titulo: 'Violencia Familiar', detalle: 'Medidas de protección y defensa de víctimas.' },
+    { titulo: 'Derecho Penal', detalle: 'Defensa técnica, denuncias y asesoría a agraviados.' },
+    { titulo: 'Derecho de Familia', detalle: 'Alimentos, divorcio, tenencia, régimen de visitas, violencia familiar.' },
     { titulo: 'Derecho Civil', detalle: 'Contratos, sucesiones, desalojos, obligaciones.' },
-    { titulo: 'Derecho Laboral', detalle: 'Despidos, beneficios sociales, conciliaciones.' },
-    { titulo: 'Derecho Penal', detalle: 'Defensa técnica y asesoría a agraviados.' },
-    { titulo: 'Consultoría Empresarial', detalle: 'Constitución de empresas y asesoría preventiva.' },
+    { titulo: 'Notarial y Registral', detalle: 'Trámites notariales, inscripciones y saneamiento ante SUNARP.' },
+    { titulo: 'Cumplimiento Normativo', detalle: 'Compliance y prevención de riesgos legales.' },
+    { titulo: 'Derecho Empresarial', detalle: 'Constitución de empresas y asesoría corporativa.' },
   ],
 };
 
