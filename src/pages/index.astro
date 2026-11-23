@@ -1,0 +1,263 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Foto from '../components/Foto.astro';
+import {
+  firma, hero, nosotros, bandas, firmaBloque, cita, areas, profesionales, publicaciones,
+} from '../data/site';
+const year = new Date().getFullYear();
+---
+<Base>
+  <Header />
+
+  <main>
+    <!-- HERO: foto a pantalla completa con título abajo a la izquierda -->
+    <section class="hero">
+      <Foto src={hero.imagen} alt="" eager />
+      <div class="hero__shade"></div>
+      <h1 class="hero__title pad reveal">{hero.titulo}</h1>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section id="firma" class="text-standard pad">
+      <h2 class="pretitle reveal">{nosotros.pretitulo}</h2>
+      <p class="serif-lg reveal">{nosotros.destacado}</p>
+      <div class="text-standard__flex">
+        <div class="text-standard__text reveal">
+          {nosotros.texto.map((p) => <p>{p}</p>)}
+        </div>
+        <div class="links reveal">
+          {nosotros.enlaces.map((l) => <a class="border-button" href={l.href}>{l.label}</a>)}
+        </div>
+      </div>
+    </section>
+
+    <!-- BANDA DE IMAGEN A ANCHO COMPLETO -->
+    <div class="band band--full reveal"><Foto src={bandas.banda1} /></div>
+
+    <!-- ÁREAS DE PRÁCTICA -->
+    <section id="areas" class="text-standard pad">
+      <h2 class="pretitle reveal">{areas.pretitulo}</h2>
+      <p class="serif-lg reveal">{areas.destacado}</p>
+      <ul class="areas reveal">
+        {areas.lista.map((a) => (
+          <li>
+            <h3>{a.titulo}</h3>
+            <p>{a.detalle}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- GALERÍA DOS COLUMNAS -->
+    <div class="gallery pad">
+      {bandas.galeria.map((g) => <div class="gallery__item reveal"><Foto src={g} /></div>)}
+    </div>
+
+    <!-- TEXTO DOS COLUMNAS -->
+    <section class="two-col pad">
+      <h3 class="two-col__title reveal">{firmaBloque.titulo}</h3>
+      <div>
+        <p class="serif-lg reveal">{firmaBloque.destacado}</p>
+        <div class="two-col__text reveal">
+          {firmaBloque.texto.map((p) => <p>{p}</p>)}
+        </div>
+        <div class="links reveal">
+          {firmaBloque.enlaces.map((l) => <a class="border-button" href={l.href}>{l.label}</a>)}
+        </div>
+      </div>
+    </section>
+
+    <!-- CITA -->
+    <section class="quote pad reveal">
+      <blockquote>“{cita.texto}”</blockquote>
+      <p class="quote__byline">{cita.autor}</p>
+    </section>
+
+    <!-- BANDA DE IMAGEN CON MÁRGENES -->
+    <div class="pad"><div class="band band--padded reveal"><Foto src={bandas.banda2} /></div></div>
+
+    <!-- PROFESIONALES -->
+    <section id="profesionales" class="text-standard pad">
+      <h2 class="pretitle reveal">{profesionales.pretitulo}</h2>
+      <p class="serif-lg reveal">{profesionales.destacado}</p>
+      <div class="team">
+        {profesionales.equipo.map((p) => (
+          <article class="team__card reveal">
+            <div class="team__photo"><Foto src={p.foto} alt={p.nombre} /></div>
+            <h3>{p.nombre}</h3>
+            <p>{p.cargo}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- DESTACADOS / PUBLICACIONES -->
+    <section id="publicaciones" class="text-standard pad">
+      <h2 class="pretitle reveal">{publicaciones.pretitulo}</h2>
+      <div class="cards">
+        {publicaciones.items.map((c) => (
+          <a class="card reveal" href={c.href}>
+            <h3>{c.titulo}</h3>
+            <div class="card__img"><Foto src={c.imagen} /></div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- BANDA FINAL -->
+    <div class="band band--full band--short reveal"><Foto src={bandas.final} /></div>
+  </main>
+
+  <!-- FOOTER / CONTACTO -->
+  <footer id="contacto" class="footer pad">
+    <div class="footer__left">
+      <a href="#" class="footer__logo">
+        <span>{firma.nombre}</span>
+        <small>Abogados &amp; Consultores</small>
+      </a>
+      <a class="border-button border-button--light" href={`https://wa.me/${firma.whatsapp}`} target="_blank" rel="noopener">
+        Escríbenos por WhatsApp
+      </a>
+      <p class="copy">© {year} {firma.razonSocial}</p>
+    </div>
+    <div class="footer__right">
+      <div>
+        <h4>Dirección</h4>
+        <p>{firma.direccion}</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <p><a href={`mailto:${firma.email}`}>{firma.email}</a></p>
+        <p><a href={`tel:${firma.telefono.replace(/\s/g, '')}`}>{firma.telefono}</a></p>
+      </div>
+      <div>
+        <h4>Síguenos</h4>
+        <p><a href={firma.redes.tiktok} target="_blank" rel="noopener">TikTok</a></p>
+        <p><a href={firma.redes.facebook} target="_blank" rel="noopener">Facebook</a></p>
+        <p><a href={firma.redes.linkedin} target="_blank" rel="noopener">LinkedIn</a></p>
+      </div>
+    </div>
+  </footer>
+</Base>
+
+<style>
+  /* HERO */
+  .hero { position: relative; height: 100svh; min-height: 520px; color: var(--white); }
+  .hero__shade {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(7, 31, 28, 0.55), transparent 25%),
+      linear-gradient(to top, rgba(7, 31, 28, 0.65), transparent 55%);
+  }
+  .hero :global(.foto) { position: absolute; inset: 0; background: var(--green); }
+  .hero :global(.foto::before) { color: var(--off-white); }
+  .hero__title {
+    position: absolute; bottom: 0;
+    padding-bottom: clamp(2.5rem, 7vw, 5rem);
+    max-width: 900px;
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.3rem, 6vw, 4.6rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+  }
+
+  /* TEXT STANDARD */
+  .text-standard { padding-block: var(--gap-l) var(--gap-l); }
+  .text-standard__flex {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2.5rem;
+    margin-left: auto;
+    max-width: 62%;
+  }
+  .text-standard__text p + p { margin-top: 1rem; }
+  .text-standard__text, .two-col__text { color: var(--very-dark-grey); font-size: 0.95rem; }
+  .links { display: flex; flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+
+  /* BANDS */
+  .band { height: 85svh; }
+  .band--full { width: 100%; }
+  .band--padded { height: 60svh; }
+  .band--short { height: 55svh; }
+
+  /* ÁREAS */
+  .areas {
+    list-style: none; padding: 0;
+    margin: 3rem 0 0 auto; max-width: 62%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0 3rem;
+  }
+  .areas li { border-top: 1px solid var(--light-grey); padding: 1.3rem 0 1.6rem; }
+  .areas h3 { font-family: var(--serif); font-weight: 400; font-size: 1.45rem; text-transform: uppercase; }
+  .areas p { font-size: 0.88rem; color: var(--very-dark-grey); margin-top: 0.3rem; }
+
+  /* GALLERY */
+  .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; padding-block: 0 var(--gap-xl); }
+  .gallery__item { aspect-ratio: 4 / 5; }
+
+  /* TWO COLUMNS */
+  .two-col {
+    display: grid; grid-template-columns: 38% 1fr; gap: 3rem;
+    padding-bottom: var(--gap-xl);
+  }
+  .two-col__title {
+    font-family: var(--serif); font-weight: 300;
+    font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.1; text-transform: uppercase;
+  }
+  .two-col__text { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
+
+  /* QUOTE */
+  .quote { max-width: 1000px; margin: 0 auto; padding-bottom: var(--gap-l); }
+  .quote blockquote {
+    text-align: center; font-family: var(--serif); font-weight: 300;
+    font-size: clamp(1.3rem, 2.4vw, 1.75rem); line-height: 1.35; text-transform: uppercase;
+  }
+  .quote__byline { text-align: right; margin-top: 1.5rem; font-size: 0.85rem; color: var(--very-dark-grey); }
+
+  /* TEAM */
+  .team { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .team__photo { aspect-ratio: 3 / 4; margin-bottom: 1rem; }
+  .team__card h3 { font-family: var(--serif); font-weight: 400; font-size: 1.25rem; line-height: 1.2; }
+  .team__card p { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--medium-grey); margin-top: 0.3rem; }
+
+  /* CARDS */
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .card {
+    display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem;
+    border-top: 1px solid var(--green); padding-top: 1rem;
+  }
+  .card h3 { font-family: var(--serif); font-weight: 400; font-size: 1.3rem; line-height: 1.2; }
+  .card__img { aspect-ratio: 4 / 3; overflow: hidden; }
+  .card__img :global(img) { transition: transform 0.6s ease; }
+  .card:hover .card__img :global(img) { transform: scale(1.05); }
+
+  /* FOOTER */
+  .footer {
+    background: var(--dark-green); color: var(--off-white);
+    display: grid; grid-template-columns: 1fr 1.6fr; gap: 3rem;
+    padding-block: var(--gap-l) 2.5rem; font-size: 0.88rem;
+  }
+  .footer__left { display: flex; flex-direction: column; align-items: flex-start; gap: 2rem; }
+  .footer__logo span { display: block; font-family: var(--serif); font-weight: 300; font-size: 2rem; text-transform: uppercase; line-height: 1; }
+  .footer__logo small { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .border-button--light:hover { background: var(--off-white); color: var(--dark-green); border-color: var(--off-white); }
+  .copy { margin-top: auto; opacity: 0.6; font-size: 0.78rem; }
+  .footer__right { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .footer h4 { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; margin: 0 0 0.8rem; opacity: 0.6; }
+  .footer p + p { margin-top: 0.3rem; }
+  .footer__right a:hover { text-decoration: underline; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1000px) {
+    .text-standard__flex, .areas { max-width: none; }
+    .team, .cards { grid-template-columns: repeat(2, 1fr); }
+    .two-col, .footer { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .text-standard__flex, .areas, .two-col__text, .gallery, .footer__right { grid-template-columns: 1fr; }
+    .band { height: 55svh; }
+    .gallery__item { aspect-ratio: 4 / 3; }
+  }
+</style>

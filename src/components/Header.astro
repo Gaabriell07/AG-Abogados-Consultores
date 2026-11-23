@@ -1,0 +1,140 @@
+---
+import { firma, nav } from '../data/site';
+---
+<header class="navbar" id="navbar">
+  <a href="#" class="logo">
+    <span class="logo__name">{firma.nombre}</span>
+    <span class="logo__sub">Abogados &amp; Consultores</span>
+  </a>
+  <nav class="navbar__links" aria-label="Principal">
+    {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+  </nav>
+  <button class="navbar__menu" id="menu-open" aria-expanded="false" aria-controls="overlay">Menú</button>
+</header>
+
+<div class="overlay" id="overlay" hidden>
+  <div class="overlay__top">
+    <span class="logo__name">{firma.nombre}</span>
+    <button class="navbar__menu" id="menu-close">Cerrar</button>
+  </div>
+  <nav class="overlay__nav">
+    {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+  </nav>
+  <div class="overlay__foot">
+    <a href={`https://wa.me/${firma.whatsapp}`} target="_blank" rel="noopener">WhatsApp</a>
+    <a href={`mailto:${firma.email}`}>{firma.email}</a>
+  </div>
+</div>
+
+<style>
+  .navbar {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4rem var(--pad);
+    color: var(--white);
+    transition: background 0.35s, color 0.35s, padding 0.35s;
+  }
+  .navbar.is-solid {
+    background: var(--white);
+    color: var(--green);
+    padding-block: 0.9rem;
+    box-shadow: 0 1px 0 var(--light-grey);
+  }
+  .logo { display: flex; flex-direction: column; line-height: 1; }
+  .logo__name {
+    font-family: var(--serif);
+    font-size: 1.7rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .logo__sub {
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-top: 0.35rem;
+  }
+  .navbar__links { display: flex; gap: 2rem; font-size: 0.85rem; }
+  .navbar__links a { position: relative; }
+  .navbar__links a::after,
+  .overlay__nav a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 100%; height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .navbar__links a:hover::after,
+  .overlay__nav a:hover::after { transform: scaleX(1); }
+  .navbar__menu {
+    display: none;
+    background: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    background: var(--dark-green);
+    color: var(--off-white);
+    display: flex;
+    flex-direction: column;
+    padding: 1.4rem var(--pad) 2rem;
+  }
+  .overlay[hidden] { display: none; }
+  .overlay__top { display: flex; justify-content: space-between; align-items: center; }
+  .overlay__top .navbar__menu { display: block; }
+  .overlay__nav {
+    margin: auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .overlay__nav a {
+    position: relative;
+    align-self: flex-start;
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2rem, 7vw, 3.2rem);
+    text-transform: uppercase;
+  }
+  .overlay__foot { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.85rem; opacity: 0.8; }
+
+  @media (max-width: 900px) {
+    .navbar__links { display: none; }
+    .navbar__menu { display: block; }
+  }
+</style>
+
+<script>
+  const bar = document.getElementById('navbar')!;
+  const overlay = document.getElementById('overlay')!;
+  const openBtn = document.getElementById('menu-open')!;
+  const closeBtn = document.getElementById('menu-close')!;
+
+  const onScroll = () => bar.classList.toggle('is-solid', window.scrollY > window.innerHeight * 0.6);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  const setOpen = (open: boolean) => {
+    overlay.hidden = !open;
+    openBtn.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  openBtn.addEventListener('click', () => setOpen(true));
+  closeBtn.addEventListener('click', () => setOpen(false));
+  overlay.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (e) => e.key === 'Escape' && setOpen(false));
+</script>
