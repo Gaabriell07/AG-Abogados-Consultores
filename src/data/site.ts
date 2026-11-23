@@ -53,11 +53,17 @@ export const nosotros = {
   ],
 };
 
+export const mapa = {
+  pretitulo: 'Encuéntranos en',
+  direccion: 'Jr. Jorge Chávez N.° 437 – Tocache',
+  // Lo que se busca en Google Maps (más preciso con región y país)
+  consulta: 'Jr. Jorge Chávez 437, Tocache, San Martín, Perú',
+};
+
 export const bandas = {
   banda1: '/images/banda-1.jpg',
   banda2: '/images/banda-2.jpg',
   galeria: ['/images/galeria-1.jpg', '/images/galeria-2.jpg'],
-  final: '/images/banda-final.jpg',
 };
 
 export const firmaBloque = {
