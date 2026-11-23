@@ -102,7 +102,7 @@ export const profesionales = {
         'Especialista en cumplimiento normativo y prevención de lavado de activos y financiamiento del terrorismo, y en derecho notarial y registral.',
       ],
       formacion: 'Universidad César Vallejo',
-      linkedin: '', // pegar aquí la URL de su LinkedIn
+      linkedin: 'https://www.linkedin.com/in/esteban-arevalo-grandez-63560880/',
     },
     {
       nombre: 'María Janelly Arévalo Grández',
