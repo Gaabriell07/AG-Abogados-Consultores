@@ -76,7 +76,7 @@ export const firmaBloque = {
 };
 
 export const cita = {
-  texto: 'Asesoría legal a nivel nacional, presencial o virtual, desde nuestras sedes en Lima, Tarapoto y Tocache.',
+  texto: 'Cada caso merece una defensa seria, honesta y cercana.',
   autor: 'Arévalo Grández Abogados & Consultores',
 };
 
