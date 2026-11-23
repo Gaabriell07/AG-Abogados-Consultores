@@ -40,10 +40,10 @@ export const hero = {
 export const nosotros = {
   pretitulo: 'Nosotros',
   destacado:
-    'Desde 2021 brindamos asesoría y patrocinio legal en Lima, con un trato directo y humano en cada caso.',
+    'Desde 2021 brindamos asesoría y patrocinio legal con un trato directo y humano, en Lima, Tarapoto, Tocache y todo el Perú.',
   texto: [
-    'Arévalo Grández Abogados & Consultores fue fundado por los abogados Esteban Arévalo Grández y María Janelly Arévalo Grández, con especialización en cumplimiento normativo, derecho notarial y registral, y experiencia en el Poder Judicial y en el Ministerio de la Mujer y Poblaciones Vulnerables.',
-    'Contamos con sedes en Lima, Tarapoto y Tocache, y asesoramos a nivel nacional de forma presencial o virtual, con estrategias claras y comunicación constante en cada caso.',
+    'Somos un estudio jurídico fundado por los abogados Esteban y María Janelly Arévalo Grández. Unimos la especialización en cumplimiento normativo y derecho notarial y registral con la experiencia adquirida en el Poder Judicial y el sector público.',
+    'Atendemos a personas, familias y empresas de forma presencial o virtual. En cada caso trabajamos con una estrategia clara y te mantenemos informado en cada etapa del proceso.',
   ],
   enlaces: [
     { label: 'La Firma', href: '#firma' },
